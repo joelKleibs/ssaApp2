@@ -1,18 +1,29 @@
 import * as React from 'react';
-import { View, Text, Button, TouchableOpacity } from "react-native";
+import { View, Text, Button, TouchableOpacity, Image } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Header from "react-native/Libraries/NewAppScreen/components/Header";
+
+import { Header } from 'react-native-elements';
+
 
 function LandingScreen({ navigation }) {
   return (
 
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Landing Screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('PastEventsScreen')}
-      />
+    <View style={{ flex: 1 }}>
+      <View style={{ flex: 1 }}>
+        <Header
+          leftComponent={{ image: require('./utilities/images/Tekengebied 2ssa.png') }}
+          centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
+          rightComponent={{ icon: 'home', color: '#fff' }}
+        />
+      </View>
+      <View>
+        <Text>Landing Screen</Text>
+        <Button
+          title="Go to Details"
+          onPress={() => navigation.navigate('PastEventsScreen')}
+        />
+      </View>
     </View>
   );
 }
@@ -80,6 +91,8 @@ function ProofScreen({ navigation }) {
 
 const Stack = createNativeStackNavigator();
 
+
+
 function App() {
   return (
     <NavigationContainer>
@@ -87,8 +100,16 @@ function App() {
         <Stack.Screen
           name="LandingScreen"
           component={LandingScreen}
-          options={{ title: 'You see?' }}
-
+          // options={{
+          //   title: 'My home',
+          //   headerStyle: {
+          //     backgroundColor: '#f4511e',
+          //   },
+          //   headerTintColor: '#fff',
+          //   headerTitleStyle: {
+          //     fontWeight: 'bold',
+          //   },
+          // }}
         />
         <Stack.Screen name="PastEventsScreen" component={PastEventsScreen} />
         <Stack.Screen name="ScannerScreen" component={ScannerScreen} />
